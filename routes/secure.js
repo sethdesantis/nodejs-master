@@ -6,11 +6,14 @@ var router = express.Router();
 router.use(function(req,res,next){
   console.log('check for token valid? ' +auth.hasValidSession(req) );
 
+	next(); //Bypass for local development
+/*
   if (auth.hasValidSession(req)) {
       next();
   } else {
     next(res.sendStatus(403).send('Forbidden'));
   }
+  */
 });
 
 /* GET Secure resource */

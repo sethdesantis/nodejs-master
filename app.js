@@ -61,7 +61,7 @@ if(node_env == 'development') {
 	var uaaConfig = {
 			clientId: clientId,
 			serverUrl : uaaUri,
-	    defaultClientRoute : '../public/index.html',
+	    defaultClientRoute : '/index.html',
 	    base64ClientCredential: base64ClientCredential,
 			callbackUrl: applicationUrl+'/callback',
 			appUrl: applicationUrl
@@ -108,14 +108,14 @@ app.get('/favicon.ico', function (req, res) {
 app.use(express.static(path.join(__dirname, 'public')));
 
 // callback endpoint to removeSession
-app.get('removeSession', function (req, res ,next) {
+app.get('/removeSession', function (req, res ,next) {
 	auth.deleteSession(req);
 	res.redirect("/");
 });
 
 //Setting routes
-app.use('', index);
-app.use('secure', secure);
+app.use('/', index);
+app.use('/secure', secure);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

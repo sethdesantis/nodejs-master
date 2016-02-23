@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CAS Analytics</title>
+    <base href="/">
+
+    <!--[if IE]>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'><![endif]-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="shortcut icon" type="image/png" href="images/favicon.png">
+
+    <!-- Styles -->
+    <link type="text/css" rel="stylesheet" href="bower_components/iids/dist/iidx/css/iids.min.css"/>
+    <link type="text/css" rel="stylesheet" href="bower_components/iids/dist/iidx/css/responsive.min.css"/>
+
+     <!--[if lt IE 9]>
+    <link id="theme-ie" type="text/css" rel="stylesheet" href="bower_components/iids/dist/iidx/css/ie.min.css"/>
+    <![endif]-->
+
+    <link type="text/css" rel="stylesheet" href="stylesheets/main.min.css"/>
+
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+
+    <link type="text/css" rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css"/>
+
+    <link rel="import" href="bower_components/px-context-browser/px-context-browser.html"/>
+    <link rel="import" href="bower_components/px-login/px-login.html"/>
+
+    <script type='application/javascript' src='cf-env.js'></script>
+
+</head>
+
+<body class="app" data-ng-controller="MainCtrl">
+
+<div class="navbar navbar-default navbar-static-top templatecontainer">
+
+  <div class="predix-alert">
+    <alert ng-repeat="alert in alerts" type="{{alert.type}}" close="closeAlert($index)">
+      {{alert.msg}} &nbsp;
+      <span ng-if="alert.detail">
+        <i class="icon-question-sign" ng-click="alert.showDetail=!alert.showDetail;"></i>
+        <span ng-show="alert.showDetail" ng-bind="alert.detail"></span>
+      </span>
+    </alert>
+  </div>
+
+  <div class="container">
+    <div class="masthead navbar-header">
+      <a class="navbar-brand" href="#">
+        <span class="ge-logo"></span>
+        <span>Predix Analytics
+          <small><i>powered by</i> GE CAS</small>
+        </span>
+      </a>
+    </div>
+    <div class="navbar-header pull-right">
+      <px-login></px-login>
+    </div>
+  </div>
+
+  <div class="primary-navbar navbar-collapse">
+    <div class="container">
+      <ul class="nav navbar-nav" data-ng-cloak="">
+        <li ui-sref-active="active" data-ng-repeat="tab in App.tabs" xtab="tab">
+          <a ui-sref="{{tab.state}}">{{tab.label}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="content container" ui-view>
+<!-- This is the container where the tabs will render -->
+
+
+
+
+<div class="container">
+    <p>This sample app shows how a basic web application works with Predix UAA.</p>
+
+    <ul>
+      <li>
+        <a href="/login?state=secure">Login</a>
+      </li
+      <li>
+        <a href="/secure">Secure Page</a>
+      </li>
+    </ul>
+  </div>
+
+
+</div>
+
+<script type='application/javascript'
+        data-main='scripts/bootstrapper.js'
+        src='bower_components/iids/dist/iidx/components/requirejs/require.js'></script>
+
+
+</body>
+
+
+</html>
+
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Security Starter Node Application</title>
+  <link rel="stylesheet" href="stylesheets/style.css"></link>
+</head>
+<body>
+  <div class="header">
+    <h2>Security Starter Node Application</h2>
+    <h4>Predix Developer Kit</h4>
+  </div>
+  <div class="container">
+    <p>This sample app shows how a basic web application works with Predix UAA.</p>
+
+    <ul>
+      <li>
+        <a href="/login?state=secure">Login</a>
+      </li
+      <li>
+        <a href="/secure">Secure Page</a>
+      </li>
+    </ul>
+  </div>
+</body>
+</html>
+-->

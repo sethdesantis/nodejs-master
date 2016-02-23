@@ -1,0 +1,14 @@
+---
+applications:
+- name: nodejs-seed-cas
+  memory: 128M
+  buildpack: nodejs_buildpack
+  #command:  DEBUG=express:* node app.js
+  command:  node app.js
+services:
+  - uaa_cas
+env:
+    node_env: cloud
+    uaa_service_label : predix-uaa
+    clientId: oauth
+    base64ClientCredential: b2F1dGg6d1RPRjdqZGJZQmp6dVlKbnZtZDJDS3ZmV2R6dnEwYS91bkplaHlPbko4ND0=
